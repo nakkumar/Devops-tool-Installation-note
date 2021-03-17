@@ -1,0 +1,133 @@
+Docker
+******
+
+docker images ----> list all the docker images in the os.
+
+docker ps   ----> list all the runing containers.
+
+docker ps -a -----> it show all runinga and stoped  containers.
+
+docker stop (name or id  container) ---> it will stop the docker container.
+
+docker rm (name container) -----> remove stop or exited container.
+
+docker rmi (image_name) ----> it will remove the docker image.
+
+docker search (image_name) ---> it will shows all available image.
+
+docker pull (image_name) ---> it start download the image.
+
+docker run -it (ubuntu)--> run the ubuntu os.
+
+exit --> exit from ubuntu.
+
+docker run (name_image) ---> run the container.
+
+docker run -d (name_image) ---> run the container in background mode.
+
+docker exec distracted_mcclintock cat /etc/hosts  -----> it will print the (cat /etc/hosts) in running container.
+
+docker attach (name or id conatiner)  --->
+
+tags
+****
+
+#docker run (name):(version)
+
+docker run ubuntu:16.04  ----> it will take a ubuntu 16.04 image.
+
+change port
+***********
+docker run -p 80:5000 kodekloud/simple-webapp   --> it will run the application 80 instead of 5000 (run 80) port.
+---> you can run the same app in diff port.
+---> docker run -p 81:5000 kodekloud/simple-webapp  &  docker run -p 82:5000 kodekloud/simple-webapp & docker run -p 83:5000 kodekloud/simple-webapp
+---> for this example the same appli run in diff port there are 4 same appi runing 192.168.1.2:80 / 192.168.1.2:81 / 192.168.1.2:82 / 192.168.1.2:83 it will blow following ip in webbrowser.
+
+store or map the data from conatiner to base hosts
+***************************************************
+
+#docker run -v destiantion:source (name conatiner)
+
+docker run -v /root/sql_data:var/lib/mysql mysql
+
+--> All the data stored in (/root/sql_data) location.
+
+
+
+docker inspect (name/id conatiner)--> it will give info(version) about the conatiner.
+
+docker logs  (name conatiner) -->  it will print the logs of the conatiner.
+
+Environment variables
+**********************
+
+#color = os.environ.get('APP_COLOR')  --> the code present in the python web_app.
+
+#export APP_COLOR=blue; python app.py --> how to give env_vari
+
+#docker run -e (env_vari) (conatiner name)
+
+docker run -e APP_COLOR=pink simple-webapp / docker run -e APP_COLOR=blue simple-webapp
+
+docker history (name_image) --> it will shows the downloaded image size.
+
+
+Network
+*******
+docker network ls --> it will list the docker network.
+
+Docker build
+*************
+docker build (name of the docker file) -t (docker build image name) --> (docker build image name) user define.
+
+volume (protect our data in docker)
+************************************
+
+1.) bind mount
+**************
+docker run -v /root/sql_data:var/lib/mysql mysql ---> give custom path to store the data.
+				  
+2.) volume mount
+****************
+#docker volume create (name of the volume)
+
+docker volume create ubuntu_volume --> it is located in the (/var/lib/docker/volumes)
+
+docker run -v ubuntu_volume:/var/lib/mysql mysql  --> mapping the docker volume.
+
+                            (or)
+docker run \
+ --mount type=bind,source=/root/data,target=/var/lib/mysql mysql
+ 
+Remote in docker
+****************
+
+#docker -H=remote-docker-engine:2375 
+docker -H=10.123.2.1:2375 run nginx
+
+Docker limit the cpu & memory
+******************************
+
+docker run --cpus=.5 ubuntu
+
+docker run --memory=100m ubuntu
+
+scaleup the conatiners
+***********************
+
+#docker service create --replicas=(no.of count) (image_name)
+
+docker service create --replicas=100 nodejs
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
