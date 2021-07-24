@@ -1,3 +1,4 @@
 1.) java -jar jenkins.war --> start the jenkins
-2.)  java -jar jenkins.war --httpPort=8181 --> change the port number in jenkins
-3.) 
+2.) java -jar jenkins.war --httpPort=8181 --> change the port number in jenkins
+3.) /usr/share/jenkins/jenkins.war --> jenkins.war  location
+4.)
