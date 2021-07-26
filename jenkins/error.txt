@@ -1,0 +1,6 @@
+ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
+Finished: FAILURE
+
+solution1: Branch Specifier (blank for 'any')   --> give this field as blank
+
+############################
